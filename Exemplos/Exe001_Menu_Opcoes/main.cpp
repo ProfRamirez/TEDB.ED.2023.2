@@ -7,7 +7,7 @@
  *            "Estruturas de Dados (e seus algoritmos)"
  *
  *   Semana 04  : Introdução a linguagem C/C++
- *   Exemplo 001: Menu de Opções simples
+ *   Exemplo 001: Menu simples
  *
  *   Autor: Prof. Milton R Ramirez (milton@matematica.ufrj.br)
  *   Data criação  : 12 de setembro de 2023
@@ -19,39 +19,45 @@
 
 using namespace std;
 
+
+/*--------------------------------------------------------------
+ * Area de Rotina globais
+ *--------------------------------------------------------------
+*/
 void Apresenta_texto_menu(void)
 {
     cout << "+----------------------------------+" << endl;
-    cout << "\t1 - Executar a Rotina A" << endl;
-    cout << "\t2 - Executar a Rotina B" << endl;
-    cout << "\t3 - Executar a Rotina c" << endl;
+    cout << "\t1 - Cadastrar Pessoa" << endl;
+    cout << "\t2 - Consultar Pessoa" << endl;
+    cout << "\t3 - Deletar Pessoa" << endl;
     cout << "+----------------------------------+" << endl;
     cout << "+ aperte a tecla 's' para sair" << endl;
     cout << "+----------------------------------+" << endl;
 }
 
-void Executa_opcao_1(void)
+void Cadastrar_Pessoa(void)
 {
     cout << "*************************" << endl;
-    cout << "* executando a Rotina A *" << endl;
+    cout << "* Cadastro de Pessoa    *" << endl;
+    cout << "*************************" << endl;
+
+}
+
+void Consultar_Pessoa(void)
+{
+    cout << "*************************" << endl;
+    cout << "* Consultar Pessoa      *" << endl;
     cout << "*************************" << endl;
 }
 
-void Executa_opcao_2(void)
+void Deletar_Pessoa(void)
 {
     cout << "*************************" << endl;
-    cout << "* executando a Rotina B *" << endl;
+    cout << "* Deletar Pessoa *" << endl;
     cout << "*************************" << endl;
 }
 
-void Executa_opcao_3(void)
-{
-    cout << "*************************" << endl;
-    cout << "* executando a Rotina C *" << endl;
-    cout << "*************************" << endl;
-}
-
-void Menu(void)
+void Menu_de_opcoes(void)
 {
     char opcao_escolhida;
 
@@ -59,19 +65,25 @@ void Menu(void)
         Apresenta_texto_menu();
         cin >> opcao_escolhida;
         switch (opcao_escolhida) {
-            case '1' : Executa_opcao_1(); break;
-            case '2' : Executa_opcao_2(); break;
-            case '3' : Executa_opcao_3(); break;
-            case 's' : break;
+            case '1' : Cadastrar_Pessoa(); break;
+            case '2' : Consultar_Pessoa(); break;
+            case '3' : Deletar_Pessoa(); break;
+            case 's' :
+            case 'S' : break;
             default  : cout << "Opcao invalida, tente novamente, ou 's' para sair" << endl;
         }
-    } while (opcao_escolhida != 's');
+
+    } while (opcao_escolhida != 's' && opcao_escolhida != 'S');
 }
 
+/*--------------------------------------------------------------
+ * Rotina principal
+ *--------------------------------------------------------------
+*/
 int main()
 {
-    cout << "Exemplo 001: Menu de Opcoes simples " << endl;
-    Menu();
+    cout << "Exemplo 001: Menu de Opcoes" << endl;
+    Menu_de_opcoes();
 
     return 0;
 }
