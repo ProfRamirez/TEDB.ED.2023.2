@@ -38,12 +38,16 @@ class t_Pessoa
     void Print(void)
     {
         cout << "+-------------------------------------+" << endl;
-        cout << "|          Registro de Aluno          |" << endl;
+        cout << "|          Registro de Pessoa         |" << endl;
         cout << "+-------------------------------------+" << endl;
         cout << "            CPF : " << CPF     << endl;
         cout << "            Nome: " << Nome    << endl;
         cout << " Data Nascimento: " << Dt_nasc << endl;
         cout << "+-------------------------------------+" << endl;
+    }
+    t_CPF getCPF(void) // getter() necessário pois o CPF é membro PRIVATE
+    {
+        return CPF;
     }
 };
 
@@ -52,8 +56,8 @@ class t_Pessoa
  * Area de variaveis globais
  *--------------------------------------------------------------
 */
-t_Pessoa TAB_Pessoas[10];
-unsigned int indx_pessoas = 0;
+t_Pessoa TAB_Pessoas[100];
+unsigned int pos_cadastro_nova_pessoas = 0;
 
 /*--------------------------------------------------------------
  * Area de Rotina globais
@@ -70,31 +74,43 @@ void Apresenta_texto_menu(void)
     cout << "+----------------------------------+" << endl;
 }
 
-void Executa_opcao_1(void)
+void Cadastro_Pessoas(void)
 {
     t_Pessoa obj_pessoa;
+    string   pNome, pDatNasc;
+    t_CPF    pCPF;
 
     cout << "*************************" << endl;
     cout << "* Cadastro de Pessoa    *" << endl;
     cout << "*************************" << endl;
 
-    obj_pessoa.Cadastro(98744400123,"Ze das Coves","12/03/2002");
-    obj_pessoa.Print();
-    TAB_Pessoas[indx_pessoas++] = obj_pessoa;
+    cout << "Qual o CPF pessoa? "; cin >> pCPF;
+    cout << "Qual o nome da pessoa? "; cin.ignore(); getline(cin,pNome);
+    cout << "Qual a data de nascimento da pessoa? "; getline(cin,pDatNasc);
+    obj_pessoa.Cadastro(pCPF,pNome,pDatNasc);
+    TAB_Pessoas[pos_cadastro_nova_pessoas++] = obj_pessoa;
 }
 
-void Executa_opcao_2(void)
+void Consulta_Pessoas(void)
 {
+    t_CPF pCPF;
+
     cout << "*************************" << endl;
     cout << "* Consultar Pessoa      *" << endl;
     cout << "*************************" << endl;
+
+    cout << "Qual o CPF da pessoa a consultar? ";  cin >> pCPF;
+    for (unsigned int indx = 0; indx < pos_cadastro_nova_pessoas; indx++) {
+        if (TAB_Pessoas[indx].getCPF() == pCPF) TAB_Pessoas[indx].Print();
+    }
 }
 
-void Executa_opcao_3(void)
+void Deleta_Pessoa(void)
 {
     cout << "*************************" << endl;
-    cout << "* Deletar Pessoa *" << endl;
+    cout << "* Deletar Pessoa        *" << endl;
     cout << "*************************" << endl;
+
 }
 
 void Menu_de_opcoes(void)
@@ -105,9 +121,9 @@ void Menu_de_opcoes(void)
         Apresenta_texto_menu();
         cin >> opcao_escolhida;
         switch (opcao_escolhida) {
-            case '1' : Executa_opcao_1(); break;
-            case '2' : Executa_opcao_2(); break;
-            case '3' : Executa_opcao_3(); break;
+            case '1' : Cadastro_Pessoas(); break;
+            case '2' : Consulta_Pessoas(); break;
+            case '3' : Deleta_Pessoa(); break;
             case 's' : break;
             default  : cout << "Opcao invalida, tente novamente, ou 's' para sair" << endl;
         }
