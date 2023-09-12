@@ -1,4 +1,5 @@
 # depslib dependency file v1.0
-1694541565 source:e:\milton\ensino\estrutura de dados e algoritmos\tedb.ed.2023.2\exemplos\exe002_classes_simples_completa\main.cpp
+1694553079 source:e:\milton\ensino\estrutura de dados e algoritmos\tedb.ed.2023.2\exemplos\exe002_classes_simples_completa\main.cpp
 	<iostream>
+	<limits>
 

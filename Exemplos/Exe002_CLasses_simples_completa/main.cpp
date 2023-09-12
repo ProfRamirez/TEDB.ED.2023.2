@@ -16,6 +16,7 @@
  *--------------------------------------------------------------
 */
 #include <iostream>
+#include <limits>
 
 using namespace std;
 
@@ -51,13 +52,12 @@ class t_Pessoa
     }
 };
 
-
 /*--------------------------------------------------------------
  * Area de variaveis globais
  *--------------------------------------------------------------
 */
-t_Pessoa TAB_Pessoas[100];
-unsigned int pos_cadastro_nova_pessoas = 0;
+t_Pessoa TAB_Pessoas[100]; // usando um array com Estrutura de Dados basica. Preciso controlar os indices.
+unsigned int pos_cadastro_nova_pessoas = 0; // a posicao do Array vaga para armazenar nova pessoa
 
 /*--------------------------------------------------------------
  * Area de Rotina globais
@@ -84,9 +84,16 @@ void Cadastro_Pessoas(void)
     cout << "* Cadastro de Pessoa    *" << endl;
     cout << "*************************" << endl;
 
-    cout << "Qual o CPF pessoa? "; cin >> pCPF;
-    cout << "Qual o nome da pessoa? "; cin.ignore(); getline(cin,pNome);
-    cout << "Qual a data de nascimento da pessoa? "; getline(cin,pDatNasc);
+    cout << "Qual o CPF pessoa? ";
+    cin >> pCPF;
+    cin.ignore(256,'\n'); // ignora entradas ate o fim da linha
+
+    cout << "Qual o nome da pessoa? ";
+    getline(cin,pNome);
+
+    cout << "Qual a data de nascimento da pessoa? ";
+    getline(cin,pDatNasc);
+
     obj_pessoa.Cadastro(pCPF,pNome,pDatNasc);
     TAB_Pessoas[pos_cadastro_nova_pessoas++] = obj_pessoa;
 }
@@ -94,15 +101,20 @@ void Cadastro_Pessoas(void)
 void Consulta_Pessoas(void)
 {
     t_CPF pCPF;
+    unsigned int indx;
+    bool encontrei = false;
 
     cout << "*************************" << endl;
     cout << "* Consultar Pessoa      *" << endl;
     cout << "*************************" << endl;
 
     cout << "Qual o CPF da pessoa a consultar? ";  cin >> pCPF;
-    for (unsigned int indx = 0; indx < pos_cadastro_nova_pessoas; indx++) {
-        if (TAB_Pessoas[indx].getCPF() == pCPF) TAB_Pessoas[indx].Print();
-    }
+    for (indx = 0; indx < pos_cadastro_nova_pessoas; indx++)
+        if (TAB_Pessoas[indx].getCPF() == pCPF) {
+            TAB_Pessoas[indx].Print();
+            encontrei = true;
+        }
+    if (!encontrei) cout << "CPF nao encontrado" << endl;
 }
 
 void Deleta_Pessoa(void)
@@ -120,6 +132,7 @@ void Menu_de_opcoes(void)
     do {
         Apresenta_texto_menu();
         cin >> opcao_escolhida;
+        cin.ignore(256,'\n'); // ignora entradas ate o fim da linha
         switch (opcao_escolhida) {
             case '1' : Cadastro_Pessoas(); break;
             case '2' : Consulta_Pessoas(); break;
@@ -127,7 +140,7 @@ void Menu_de_opcoes(void)
             case 's' : break;
             default  : cout << "Opcao invalida, tente novamente, ou 's' para sair" << endl;
         }
-    } while (opcao_escolhida != 's');
+    } while (opcao_escolhida != 's' && opcao_escolhida != 'S');
 }
 
 /*--------------------------------------------------------------
