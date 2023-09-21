@@ -6,8 +6,9 @@
  *   MAE016 - Tópicos em Engenharia de Dados B
  *            "Estruturas de Dados (e seus algoritmos)"
  *
- *   Semana 06  : Classe Pilha
- *   Exemplo 601: Uso de classe e funções parametrizadas (template)
+ *   Semana 06  : Estruturas de Dados Lineares
+ *   Exemplo 601: Classe Pilha - 001
+ *      Uso de classe e funções parametrizadas (template)
  *
  *   Módulo Principal
  *   Autor: Prof. Milton R Ramirez (milton@matematica.ufrj.br)
