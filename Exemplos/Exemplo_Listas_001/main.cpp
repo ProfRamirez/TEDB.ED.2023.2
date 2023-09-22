@@ -20,54 +20,43 @@
 
 using namespace std;
 
-struct T_Pessoa {
-    string nome;
-    long int CPF;
+class C_Lista;
 
-    T_Pessoa(string p_nome = "") { nome = p_nome; }
-};
-
-template <class T> class C_Lista;
-
-template <class T>
 class C_No_lst_encadeada_simples {
-    T dado;
+    int dado;
     C_No_lst_encadeada_simples * prox;
-    friend class C_Lista<T>;
+    friend class C_Lista;
 
 public:
-    C_No_lst_encadeada_simples(T p_dado) { dado = p_dado; prox = nullptr; ); }
+    C_No_lst_encadeada_simples(int p_dado) { dado = p_dado; prox = nullptr; }
 };
 
-template <class T>
 class C_Lista {
-    C_No_lst_encadeada_simples<T> * inicio;
-    unsigned int num_elementos;
+    C_No_lst_encadeada_simples * inicio;
 
 public:
-    C_Lista(void) { inicio = nullptr; num_elementos = 0;}
-    void insere_no_inicio(T p_dado);
-    T select_pos(unsigned int i);
+    C_Lista(void) { inicio = nullptr; }
+    void insere_no_inicio(int p_dado);
+    void percorre_lista(void);
 };
 
-template <class T>
-void C_Lista<T>::insere_no_inicio(T p_dado)
-{
-    C_No_lst_encadeada_simples<T> * novo_no;
 
-    novo_no = new C_No_lst_encadeada_simples<T>(p_dado);
-    if (inicio != nullptr)
+void C_Lista::insere_no_inicio(int p_dado)
+{
+    C_No_lst_encadeada_simples * novo_no; // ponteiro para o novo NO
+
+    novo_no = new C_No_lst_encadeada_simples(p_dado); // cria o novo NO na memoria com o dado
+    if (inicio != nullptr) // se a lista nao esta vazia
         novo_no->prox  = inicio;
     inicio = novo_no;
-    num_elementos++;
 }
 
-template <class T>
-void C_Lista<T>::select_pos(unsigned int indx)
+void C_Lista::percorre_lista(void)
 {
-    C_No_lst_encadeada_simples<T> * aux = inicio;
-    while ( ???? )
+    C_No_lst_encadeada_simples * aux = inicio; // aponta para o 1o NO da lista
+    while ( aux ) // enquanto não for o fim da lista (testa tb se lista esta vazia)
     {
+        cout << aux->dado << endl;
         aux = aux->prox;
     }
 }
@@ -76,5 +65,16 @@ void C_Lista<T>::select_pos(unsigned int indx)
 int main()
 {
     cout << "Exemplo de Listas - 001" << endl;
+
+    C_Lista lista1;
+
+    lista1.insere_no_inicio(10);
+    lista1.insere_no_inicio(20);
+    lista1.insere_no_inicio(30);
+    lista1.insere_no_inicio(40);
+    lista1.insere_no_inicio(50);
+
+    lista1.percorre_lista();
+
     return 0;
 }
