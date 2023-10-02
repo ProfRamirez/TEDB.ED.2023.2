@@ -1,3 +1,21 @@
+/*-------------------------------------------------------------
+ * UFRJ - Universidade Federal do Rio de Janeiro
+ * IM   - Instituto de Matemática
+ * DMA  - Departamento de Matemática Aplicada
+ *
+ *   MAE016 - Tópicos em Engenharia de Dados B
+ *            "Estruturas de Dados (e seus algoritmos)"
+ *
+ *   Semana TOD :
+ *   Teste  001 : Lista de Inicialização com lista simplesmente encadeada
+ *
+ *   Módulo Principal
+ *   Autor: Prof. Milton R Ramirez (milton@matematica.ufrj.br)
+ *   Data criação  : 01 de outubro de 2023
+ *   Data alteração: 02 de outubro de 2023
+ *
+ *--------------------------------------------------------------
+*/
 #include <iostream>
 
 using namespace std;
