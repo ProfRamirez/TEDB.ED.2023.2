@@ -1,0 +1,20 @@
+# depslib dependency file v1.0
+1696900850 source:d:\ensino\tópicos\tedb.ed.2023.2\exemplos\exemplo_arvore_binaria_001\main.cpp
+	<iostream>
+	"Arvore_binaria.h"
+
+1696897780 source:d:\ensino\tópicos\tedb.ed.2023.2\exemplos\exemplo_arvore_binaria_001\src\no_arvore_binaria.cpp
+	<iostream>
+	<string>
+	"No_arvore_binaria.h"
+
+1696897208 d:\ensino\tópicos\tedb.ed.2023.2\exemplos\exemplo_arvore_binaria_001\include\no_arvore_binaria.h
+	<iostream>
+
+1696897384 d:\ensino\tópicos\tedb.ed.2023.2\exemplos\exemplo_arvore_binaria_001\include\arvore_binaria.h
+	"No_arvore_binaria.h"
+
+1696901123 source:d:\ensino\tópicos\tedb.ed.2023.2\exemplos\exemplo_arvore_binaria_001\src\arvore_binaria.cpp
+	<iostream>
+	"Arvore_binaria.h"
+
